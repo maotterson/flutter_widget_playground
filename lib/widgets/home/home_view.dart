@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_playground/widgets/login/login_view.dart';
+import 'package:flutter_widget_playground/widgets/login/login_form_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -14,6 +14,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: !loggedIn ? const LoginView() : const Text("logged in"));
+        child: loggedIn ? const Text("logged in") : const LoginFormView());
   }
 }

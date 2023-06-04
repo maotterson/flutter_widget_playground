@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class RegisterFormView extends StatefulWidget {
+  const RegisterFormView({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterFormView> createState() => _RegisterFormViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterFormViewState extends State<RegisterFormView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController password = TextEditingController();
+    final TextEditingController confirmPassword = TextEditingController();
     final inputBorder =
         OutlineInputBorder(borderRadius: BorderRadius.circular(2));
     const formFieldHeight = 80.0;
@@ -26,7 +30,6 @@ class _LoginViewState extends State<LoginView> {
       if (value.length > 20) {
         return 'Username must be no more than 20 characters.';
       }
-
       return null;
     }
 
@@ -40,7 +43,11 @@ class _LoginViewState extends State<LoginView> {
       if (value.length > 20) {
         return 'Password must be no more than 20 characters.';
       }
+      return null;
+    }
 
+    validateConfirmPassword(String? value) {
+      if (password.text != value) return 'Passwords do not match';
       return null;
     }
 
@@ -60,11 +67,13 @@ class _LoginViewState extends State<LoginView> {
                           left: 11, right: 3, top: 14, bottom: 14),
                       errorStyle: const TextStyle(fontSize: 11, height: 0.3),
                       border: inputBorder,
-                      labelText: 'Username')),
+                      labelText: 'Username',
+                      hintText: 'Create a username')),
             ),
             SizedBox(
               height: formFieldHeight,
               child: TextFormField(
+                  controller: password,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
@@ -74,7 +83,24 @@ class _LoginViewState extends State<LoginView> {
                           left: 11, right: 3, top: 14, bottom: 14),
                       errorStyle: const TextStyle(fontSize: 11, height: 0.3),
                       border: inputBorder,
-                      labelText: 'Password')),
+                      labelText: 'Password',
+                      hintText: 'Choose a password')),
+            ),
+            SizedBox(
+              height: formFieldHeight,
+              child: TextFormField(
+                  controller: confirmPassword,
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  validator: validateConfirmPassword,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(
+                        left: 11, right: 3, top: 14, bottom: 14),
+                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                    border: inputBorder,
+                    labelText: 'Confirm Password',
+                  )),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -90,21 +116,7 @@ class _LoginViewState extends State<LoginView> {
                 },
                 child: const Padding(
                   padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: Text('Log in'),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2),
-              child: OutlinedButton(
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0)))),
-                onPressed: () {},
-                child: const Padding(
-                  padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: Text('New Account'),
+                  child: Text('Create Account'),
                 ),
               ),
             ),
