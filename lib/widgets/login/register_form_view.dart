@@ -33,6 +33,17 @@ class _RegisterFormViewState extends State<RegisterFormView> {
       return null;
     }
 
+    validateEmail(String? value) {
+      if (value == null ||
+          value.isEmpty ||
+          !RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+              .hasMatch(value)) {
+        return 'Invalid email address';
+      }
+
+      return null;
+    }
+
     validatePassword(String? value) {
       if (value == null || value.isEmpty) {
         return 'Invalid password';
@@ -63,12 +74,25 @@ class _RegisterFormViewState extends State<RegisterFormView> {
               child: TextFormField(
                   validator: validateUsername,
                   decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.only(
-                          left: 11, right: 3, top: 14, bottom: 14),
-                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
-                      border: inputBorder,
-                      labelText: 'Username',
-                      hintText: 'Create a username')),
+                    contentPadding: const EdgeInsets.only(
+                        left: 11, right: 3, top: 14, bottom: 14),
+                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                    border: inputBorder,
+                    labelText: 'Username',
+                  )),
+            ),
+            SizedBox(
+              height: formFieldHeight,
+              child: TextFormField(
+                  validator: validateEmail,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(
+                        left: 11, right: 3, top: 14, bottom: 14),
+                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                    border: inputBorder,
+                    labelText: 'Email',
+                  )),
             ),
             SizedBox(
               height: formFieldHeight,
@@ -79,12 +103,12 @@ class _RegisterFormViewState extends State<RegisterFormView> {
                   autocorrect: false,
                   validator: validatePassword,
                   decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.only(
-                          left: 11, right: 3, top: 14, bottom: 14),
-                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
-                      border: inputBorder,
-                      labelText: 'Password',
-                      hintText: 'Choose a password')),
+                    contentPadding: const EdgeInsets.only(
+                        left: 11, right: 3, top: 14, bottom: 14),
+                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                    border: inputBorder,
+                    labelText: 'Password',
+                  )),
             ),
             SizedBox(
               height: formFieldHeight,

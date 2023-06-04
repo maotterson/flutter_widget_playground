@@ -9,7 +9,7 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register'),
+        title: const Text('Create New Account'),
       ),
       body: const Center(
         child: RegisterFormView(),
