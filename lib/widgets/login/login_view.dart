@@ -103,15 +103,7 @@ class _LoginViewState extends State<LoginView> {
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0)))),
-                onPressed: () {
-                  showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Container(
-                          child: const RegisterView(),
-                        );
-                      });
-                },
+                onPressed: () {},
                 child: const Padding(
                   padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                   child: Text('New Account'),

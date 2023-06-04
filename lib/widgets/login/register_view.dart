@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+  const RegisterView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<RegisterView> createState() => _RegisterViewState();
@@ -12,6 +14,8 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _password = TextEditingController();
+    final TextEditingController _confirmPassword = TextEditingController();
     final inputBorder =
         OutlineInputBorder(borderRadius: BorderRadius.circular(2));
     const formFieldHeight = 80.0;
@@ -26,7 +30,6 @@ class _RegisterViewState extends State<RegisterView> {
       if (value.length > 20) {
         return 'Username must be no more than 20 characters.';
       }
-
       return null;
     }
 
@@ -40,7 +43,11 @@ class _RegisterViewState extends State<RegisterView> {
       if (value.length > 20) {
         return 'Password must be no more than 20 characters.';
       }
+      return null;
+    }
 
+    validateConfirmPassword(String? value) {
+      if (_password.text != value) return 'Passwords do not match';
       return null;
     }
 
@@ -66,6 +73,7 @@ class _RegisterViewState extends State<RegisterView> {
             SizedBox(
               height: formFieldHeight,
               child: TextFormField(
+                  controller: _password,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
@@ -77,6 +85,22 @@ class _RegisterViewState extends State<RegisterView> {
                       border: inputBorder,
                       labelText: 'Password',
                       hintText: 'Choose a password')),
+            ),
+            SizedBox(
+              height: formFieldHeight,
+              child: TextFormField(
+                  controller: _confirmPassword,
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  validator: validateConfirmPassword,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(
+                        left: 11, right: 3, top: 14, bottom: 14),
+                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                    border: inputBorder,
+                    labelText: 'Confirm Password',
+                  )),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
