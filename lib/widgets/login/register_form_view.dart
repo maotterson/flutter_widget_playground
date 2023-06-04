@@ -66,85 +66,87 @@ class _RegisterFormViewState extends State<RegisterFormView> {
       key: _formKey,
       child: Padding(
         padding: const EdgeInsets.all(25),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: formFieldHeight,
-              child: TextFormField(
-                  validator: validateUsername,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
-                        left: 11, right: 3, top: 14, bottom: 14),
-                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
-                    border: inputBorder,
-                    labelText: 'Username',
-                  )),
-            ),
-            SizedBox(
-              height: formFieldHeight,
-              child: TextFormField(
-                  validator: validateEmail,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
-                        left: 11, right: 3, top: 14, bottom: 14),
-                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
-                    border: inputBorder,
-                    labelText: 'Email',
-                  )),
-            ),
-            SizedBox(
-              height: formFieldHeight,
-              child: TextFormField(
-                  controller: password,
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  validator: validatePassword,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
-                        left: 11, right: 3, top: 14, bottom: 14),
-                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
-                    border: inputBorder,
-                    labelText: 'Password',
-                  )),
-            ),
-            SizedBox(
-              height: formFieldHeight,
-              child: TextFormField(
-                  controller: confirmPassword,
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  validator: validateConfirmPassword,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
-                        left: 11, right: 3, top: 14, bottom: 14),
-                    errorStyle: const TextStyle(fontSize: 11, height: 0.3),
-                    border: inputBorder,
-                    labelText: 'Confirm Password',
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: OutlinedButton(
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0)))),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // todo
-                  } else {}
-                },
-                child: const Padding(
-                  padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: Text('Create Account'),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: formFieldHeight,
+                child: TextFormField(
+                    validator: validateUsername,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(
+                          left: 11, right: 3, top: 14, bottom: 14),
+                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                      border: inputBorder,
+                      labelText: 'Username',
+                    )),
+              ),
+              SizedBox(
+                height: formFieldHeight,
+                child: TextFormField(
+                    validator: validateEmail,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(
+                          left: 11, right: 3, top: 14, bottom: 14),
+                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                      border: inputBorder,
+                      labelText: 'Email',
+                    )),
+              ),
+              SizedBox(
+                height: formFieldHeight,
+                child: TextFormField(
+                    controller: password,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    validator: validatePassword,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(
+                          left: 11, right: 3, top: 14, bottom: 14),
+                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                      border: inputBorder,
+                      labelText: 'Password',
+                    )),
+              ),
+              SizedBox(
+                height: formFieldHeight,
+                child: TextFormField(
+                    controller: confirmPassword,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    validator: validateConfirmPassword,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(
+                          left: 11, right: 3, top: 14, bottom: 14),
+                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
+                      border: inputBorder,
+                      labelText: 'Confirm Password',
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: OutlinedButton(
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0)))),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // todo
+                    } else {}
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                    child: Text('Create Account'),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
