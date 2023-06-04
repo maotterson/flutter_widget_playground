@@ -12,8 +12,9 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    var inputBorder =
+    final inputBorder =
         OutlineInputBorder(borderRadius: BorderRadius.circular(2));
+    const formFieldHeight = 80.0;
 
     validateUsername(String? value) {
       if (value == null || value.isEmpty) {
@@ -36,17 +37,31 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextFormField(
-                validator: validateUsername,
-                decoration: InputDecoration(
-                    border: inputBorder, labelText: 'Username')),
-            TextFormField(
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                validator: validatePassword,
-                decoration: InputDecoration(
-                    border: inputBorder, labelText: 'Password')),
+            SizedBox(
+              height: formFieldHeight,
+              child: TextFormField(
+                  validator: validateUsername,
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(
+                          left: 11, right: 3, top: 14, bottom: 14),
+                      errorStyle: const TextStyle(fontSize: 9, height: 0.3),
+                      border: inputBorder,
+                      labelText: 'Username')),
+            ),
+            SizedBox(
+              height: formFieldHeight,
+              child: TextFormField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  validator: validatePassword,
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(
+                          left: 11, right: 3, top: 14, bottom: 14),
+                      errorStyle: const TextStyle(fontSize: 9, height: 0.3),
+                      border: inputBorder,
+                      labelText: 'Password')),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
