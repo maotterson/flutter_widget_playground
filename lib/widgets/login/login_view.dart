@@ -20,6 +20,13 @@ class _LoginViewState extends State<LoginView> {
       if (value == null || value.isEmpty) {
         return 'Invalid username';
       }
+      if (value.length < 6) {
+        return 'Username must be at least 6 characters.';
+      }
+      if (value.length > 20) {
+        return 'Username must be no more than 20 characters.';
+      }
+
       return null;
     }
 
@@ -27,6 +34,13 @@ class _LoginViewState extends State<LoginView> {
       if (value == null || value.isEmpty) {
         return 'Invalid password';
       }
+      if (value.length < 6) {
+        return 'Password must be at least 6 characters.';
+      }
+      if (value.length > 20) {
+        return 'Password must be no more than 20 characters.';
+      }
+
       return null;
     }
 
@@ -44,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(
                           left: 11, right: 3, top: 14, bottom: 14),
-                      errorStyle: const TextStyle(fontSize: 9, height: 0.3),
+                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
                       border: inputBorder,
                       labelText: 'Username')),
             ),
@@ -58,21 +72,43 @@ class _LoginViewState extends State<LoginView> {
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(
                           left: 11, right: 3, top: 14, bottom: 14),
-                      errorStyle: const TextStyle(fontSize: 9, height: 0.3),
+                      errorStyle: const TextStyle(fontSize: 11, height: 0.3),
                       border: inputBorder,
                       labelText: 'Password')),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: ElevatedButton(
+              child: OutlinedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0)))),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // todo
-                  }
+                  } else {}
                 },
                 child: const Padding(
                   padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                   child: Text('Log in'),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: OutlinedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0)))),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    // todo
+                  } else {}
+                },
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                  child: Text('New Account'),
                 ),
               ),
             ),
