@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'register_view.dart';
-
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -62,7 +60,8 @@ class _LoginViewState extends State<LoginView> {
                           left: 11, right: 3, top: 14, bottom: 14),
                       errorStyle: const TextStyle(fontSize: 11, height: 0.3),
                       border: inputBorder,
-                      labelText: 'Username')),
+                      labelText: 'Username',
+                      hintText: 'Create a username')),
             ),
             SizedBox(
               height: formFieldHeight,
@@ -76,7 +75,8 @@ class _LoginViewState extends State<LoginView> {
                           left: 11, right: 3, top: 14, bottom: 14),
                       errorStyle: const TextStyle(fontSize: 11, height: 0.3),
                       border: inputBorder,
-                      labelText: 'Password')),
+                      labelText: 'Password',
+                      hintText: 'Choose a password')),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -92,29 +92,7 @@ class _LoginViewState extends State<LoginView> {
                 },
                 child: const Padding(
                   padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: Text('Log in'),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2),
-              child: OutlinedButton(
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0)))),
-                onPressed: () {
-                  showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Container(
-                          child: const RegisterView(),
-                        );
-                      });
-                },
-                child: const Padding(
-                  padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: Text('New Account'),
+                  child: Text('Create Account'),
                 ),
               ),
             ),
