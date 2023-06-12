@@ -9,7 +9,16 @@ class GameBoardView extends StatefulWidget {
 }
 
 class _GameBoardViewState extends State<GameBoardView> {
-  var pieces = List.generate(8, (_) => List.filled(8, '.'));
+  List<List<String>> pieces = [
+    ['m', 'm', 'm', 'm', 'm', 'm', 'm', 'm'],
+    ['.', '.', '.', '.', '.', '.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.', '.', '.'],
+    ['m', 'm', 'm', 'm', 'm', 'm', 'm', 'm']
+  ];
 
   Color getColor(int index) {
     int row = index ~/ 8;

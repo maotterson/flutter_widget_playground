@@ -16,7 +16,8 @@ class _GameTileState extends State<GameTile> {
     return Container(
       constraints: BoxConstraints.expand(),
       color: widget.color,
-      child: Center(child: Text(widget.pieceInfo)),
+      child:
+          Center(child: Text(widget.pieceInfo != '.' ? widget.pieceInfo : '')),
     );
   }
 }
