@@ -14,7 +14,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: loggedIn ? const GameBoardView() : const LoginFormView());
+    return Padding(
+      padding: const EdgeInsets.all(25.0),
+      child: Center(
+          child: loggedIn ? const GameBoardView() : const LoginFormView()),
+    );
   }
 }
