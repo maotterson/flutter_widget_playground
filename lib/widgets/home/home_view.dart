@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_playground/widgets/gameboard/game_board.dart';
 import 'package:flutter_widget_playground/widgets/login/login_form_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -9,11 +10,11 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  bool loggedIn = false;
+  bool loggedIn = true;
 
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: loggedIn ? const Text("logged in") : const LoginFormView());
+        child: loggedIn ? const GameBoardView() : const LoginFormView());
   }
 }
