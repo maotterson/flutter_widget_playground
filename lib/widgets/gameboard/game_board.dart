@@ -9,6 +9,8 @@ class GameBoardView extends StatefulWidget {
 }
 
 class _GameBoardViewState extends State<GameBoardView> {
+  var pieces = List.generate(8, (_) => List.filled(8, '.'));
+
   Color getColor(int index) {
     int row = index ~/ 8;
     Color cellColor =
@@ -22,7 +24,8 @@ class _GameBoardViewState extends State<GameBoardView> {
       crossAxisCount: 8,
       children: List.generate(64, (index) {
         return Center(
-          child: GameTile(color: getColor(index)),
+          child: GameTile(
+              color: getColor(index), pieceInfo: pieces[index ~/ 8][index % 8]),
         );
       }),
     );
